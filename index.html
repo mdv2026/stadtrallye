@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDV 2026 Stadtrallye</title>
+    <style>
+        /* Mobile-First Design & Stuttgart Farben (Schwarz/Gelb) */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            color: #222;
+        }
+        header {
+            background-color: #FFD100; /* Stuttgart Gelb */
+            color: #000;
+            text-align: center;
+            padding: 25px 15px;
+            border-bottom: 5px solid #000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        header p {
+            margin: 8px 0 0 0;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .container {
+            padding: 15px;
+            max-width: 600px;
+            margin: auto;
+            padding-bottom: 50px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 6px solid #E32221; /* Roter Akzent */
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .hidden {
+            display: none;
+            opacity: 0;
+        }
+        h2 {
+            margin-top: 0;
+            color: #000;
+            font-size: 20px;
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 10px;
+        }
+        p {
+            line-height: 1.5;
+            font-size: 16px;
+        }
+        .info-box {
+            background-color: #eef5fa;
+            border-left: 4px solid #0056b3;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14.5px;
+            color: #333;
+        }
+        .info-box strong {
+            color: #0056b3;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        .challenge-box {
+            background-color: #fff9e6;
+            border: 1px solid #FFD100;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .upload-hint {
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        .unlock-area {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            color: white;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            font-size: 20px;
+            text-align: center;
+            border: 2px solid #FFD100;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            letter-spacing: 5px;
+        }
+        button {
+            background-color: #FFD100;
+            color: #000;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        button:active {
+            background-color: #e6bc00;
+        }
+        .error-msg {
+            color: #ff4444;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        .finale-box {
+            background-color: #000;
+            color: #FFD100;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid #FFD100;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>MDV 2026</h1>
+    <p>Mission Stuttgart<br>📍 Startpunkt: Liederhalle</p>
+</header>
+
+<div class="container">
+
+    <div id="station1" class="card">
+        <h2>📍 1. Palast der Republik</h2>
+        
+        <div class="info-box">
+            <strong>💡 Wusstest du schon?</strong>
+            Ursprünglich wurde der kleine achteckige Pavillon 1926 als öffentliches Toilettenhäuschen gebaut und später auch als Buchverkaufsstelle genutzt – sein Spitzname damals war „Buchhaus Wittwer“.<br><br>
+            1989 wurde der Pavillon in eine Gaststätte und Bar umgewandelt und erhielt den heute bekannten Namen „Palast der Republik“. Seither ist er besonders im Frühling und Sommer ein beliebter Treffpunkt, an dem Menschen aus Stuttgart und Gästen gemütlich draußen sitzen, trinken und reden – oft bis spät in die Nacht. Trotz seines unscheinbaren Ursprungs gilt der Ort heute als kulinarisch‑kultureller Treffpunkt mit ganz eigener Atmosphäre im Herzen von Stuttgart.
+        </div>
+        
+        <div class="challenge-box">
+            🍻 Die Mission: Startschuss<br><br>
+            Kauft euch ein kühles Getränk, um entspannt die Stadttour zu starten! 
+        </div>
+        <p class="upload-hint">📸 Schickt ein Foto, wie ihr anstoßt, in eure MDV-Gruppe!</p>
+
+        <div id="unlock-area-1" class="unlock-area">
+            <label>Foto verschickt? Passwort eingeben:</label>
+            <input type="password" id="pwd1" inputmode="numeric" maxlength="4" placeholder="****">
+            <button onclick="checkPassword(1, 2)">Nächste Mission</button>
+            <div id="error1" class="error-msg">Falsches Passwort!</div>
+        </div>
+    </div>
+
+    <div id="station2" class="card hidden">
+        <h2>📍 2. Bücherwurm in der Stadtbibliothek</h2>
+        
+        <div class="info-box">
+            <strong>💡 Wusstest du schon?</strong>
+            Die Stadtbibliothek Stuttgart ist ein modernes Wahrzeichen der Stadt, eröffnet 2011 am Mailänder Platz im Europaviertel. Gebaut in einem kubischen, minimalistischen Design, fällt sie durch ihre helle, weiße Fassade und die zentrale Lichthof-Konstruktion sofort ins Auge.<br><br>
+            Innen dominieren klare Linien und viel Licht – die Bibliothek wirkt fast wie ein Lichtwürfel, der zum Lesen, Lernen und Verweilen einlädt. Sie bietet über 500.000 Medien, Arbeitsplätze, Veranstaltungsräume und ein Café. Ein beliebter Ort für Studierende, Familien und Touristen, die Architektur und Atmosphäre gleichermaßen schätzen.
+        </div>
+        
+        <div class="challenge-box">
+            📚 Die Mission: Das schwerste Wissen<br><br>
+            Geht in die Stadtbibliothek und sucht nach dem dicksten Buch, das ihr finden könnt!
+        </div>
+        <p class="upload-hint">📸 Macht ein Foto vom Buch und schickt/ladet es in der Gruppe hoch!</p>
+
+        <div id="unlock-area-2" class="unlock-area">
+            <label>Buch gefunden? Passwort eingeben:</label>
+            <input type="password" id="pwd2" inputmode="numeric" maxlength="4" placeholder="****">
+            <button onclick="checkPassword(2, 3)">Nächste Mission</button>
+            <div id="error2" class="error-msg">Falsches Passwort!</div>
+        </div>
+    </div>
+
+    <div id="station3" class="card hidden">
+        <h2>📍 3. Stuttgart 21</h2>
+        
+        <div class="info-box">
+            <strong>💡 Wusstest du schon?</strong>
+            Stuttgart 21 ist das Großprojekt, bei dem Stuttgart seinen alten Kopfbahnhof gegen einen modernen unterirdischen Durchgangsbahnhof eintauschen will. Die Idee: Züge sollen schneller durchfahren.<br><br>
+            Dafür wurden riesige Tunnel gebaut – mit speziell angepassten Tunnelbohrern. Nebenbei entstehen oben neue Flächen für Parks, Wohnungen und ein moderneres Stadtbild. Und auch wenn das Projekt lange dauert: Am Ende soll Stuttgart einen Bahnhof bekommen, der mehr kann als nur Verspätungen ansagen.
+        </div>
+        
+        <div class="challenge-box">
+            🚧 Die Mission: Bauarbeiter gesucht<br><br>
+            Sucht euch einen Bauzaun oder ein Bullauge zur Baustelle. Die gesamte Gruppe soll eine menschliche Baumaschine (z.B. einen Bagger, Kran oder Pressluftbohrer) nachstellen.
+        </div>
+        <p class="upload-hint">📸 Schickt ein Foto eurer "Baumaschine" in die Gruppe, um zur nächsten Aufgabe zu kommen!</p>
+
+        <div id="unlock-area-3" class="unlock-area">
+            <label>Baustelle abgenommen? Passwort eingeben:</label>
+            <input type="password" id="pwd3" inputmode="numeric" maxlength="4" placeholder="****">
+            <button onclick="checkPassword(3, 4)">Nächste Mission</button>
+            <div id="error3" class="error-msg">Falsches Passwort!</div>
+        </div>
+    </div>
+
+    <div id="station4" class="card hidden">
+        <h2>📍 4. Das moderne Denkmal</h2>
+        
+        <div class="info-box">
+            <strong>💡 Wusstest du schon?</strong>
+            Das Neue Schloss wurde im 18. Jahrhundert gebaut und war die Residenz der württembergischen Herzöge und späteren Könige. Im Zweiten Weltkrieg wurde es stark zerstört, danach aber wieder aufgebaut.<br><br>
+            Der Schlossplatz davor entwickelte sich zum zentralen Platz der Stadt und wurde immer mehr zum Treffpunkt für die Bevölkerung. Heute sitzt im Neuen Schloss die Landesverwaltung, und der Schlossplatz ist das „Wohnzimmer“ von Stuttgart.
+        </div>
+        
+        <div class="challenge-box">
+            🏛️ Die Mission: Schlossplatz-Statistik<br><br>
+            Vergesst das olle Schloss im Hintergrund. Baut als Gruppe ein episches menschliches Denkmal auf dem Rasen auf (z.B. eine Pyramide oder eine Denker-Pose).<br><br>
+            <strong>Aufgabe:</strong> Bleibt exakt 3 Minuten in der Position eures Denkmals stehen und zählt alle Passanten, die stehen bleiben und sichtlich ein Foto von euch machen.
+        </div>
+        <p class="upload-hint">📸 Lasst am Ende selbst ein Foto von euch in der Pose machen und schickt es in die Gruppe!</p>
+
+        <div id="unlock-area-4" class="unlock-area">
+            <label>Zählung abgeschlossen? Passwort eingeben:</label>
+            <input type="password" id="pwd4" inputmode="numeric" maxlength="4" placeholder="****">
+            <button onclick="checkPassword(4, 5)">Nächste Mission</button>
+            <div id="error4" class="error-msg">Falsches Passwort!</div>
+        </div>
+    </div>
+
+    <div id="station5" class="card hidden">
+        <h2>📍 5. Kehrwoche am Rathausplatz</h2>
+        
+        <div class="info-box">
+            <strong>💡 Wusstest du schon?</strong>
+            Das Stuttgarter Rathaus wurde in den 1950er Jahren neu gebaut, nachdem das frühere Rathaus im Zweiten Weltkrieg stark zerstört worden war. Es steht am Marktplatz und ist seitdem das politische Zentrum der Stadtverwaltung.<br><br>
+            Typisch ist der hohe Rathausturm, der das Gebäude weithin sichtbar macht. Das heutige Rathaus ist bewusst modern gestaltet und unterscheidet sich deutlich von historischen Gebäuden in der Umgebung. Bis heute ist es der Ort, an dem wichtige Entscheidungen für Stuttgart getroffen werden.
+        </div>
+        
+        <div class="challenge-box">
+            🧹 Die Mission: Schwaben-Pantomime<br><br>
+            Spielt "Schwaben-Pantomime". Ihr müsst Passanten einen typisch schwäbischen Begriff (z.B. Kehrwoche, Maultasche, Brezel oder Spätzlepresse) vorspielen – komplett ohne Worte.<br><br>
+            <strong>Bonus:</strong> Fahrt danach eine Runde Paternoster im Rathaus!
+        </div>
+        <p class="upload-hint">📸 Schießt ein Foto von euch im Paternoster (oder davor, falls er zu hat) und ab in die Gruppe damit!</p>
+
+        <div id="unlock-area-5" class="unlock-area">
+            <label>Paternoster überlebt? Passwort eingeben:</label>
+            <input type="password" id="pwd5" inputmode="numeric" maxlength="4" placeholder="****">
+            <button onclick="checkPassword(5, 6)">Nächste Mission</button>
+            <div id="error5" class="error-msg">Falsches Passwort!</div>
+        </div>
+    </div>
+
+    <div id="station6" class="card hidden">
+        <h2>📍 6. Pause am Hans im Glück Brunnen</h2>
+        
+        <div class="info-box">
+            <strong>💡 Wusstest du schon?</strong>
+            Der Brunnen in der Geißstraße wurde am 12. Mai 1909 als krönender Abschluss einer Altstadtsanierung eingeweiht.<br><br>
+            Er zeigt eine Figur des Märchenhelden Hans aus dem Grimmschen Märchen „Hans im Glück“, umgeben von einem vergoldeten Schwein und Enten als Wasserspeier. Szenen aus der Geschichte erzählen sechs Medaillons rund um den Brunnen. Heute ist das Viertel ein extrem belebter Ort, besonders für Studenten.
+        </div>
+        
+        <div class="challenge-box">
+            🍔 Die Mission: Energiereserven füllen<br><br>
+            Ihr seid im Hans-im-Glück-Viertel angekommen! Macht eine wohlverdiente Pause. Gönnt euch einen Snack oder ein kaltes Getränk.
+        </div>
+        <p class="upload-hint">📸 Macht ein Gruppenfoto beim Entspannen und schickt es weiter!</p>
+
+        <div id="unlock-area-6" class="unlock-area">
+            <label>Gestärkt für den Endspurt? Passwort:</label>
+            <input type="password" id="pwd6" inputmode="numeric" maxlength="4" placeholder="****">
+            <button onclick="checkPassword(6, 7)">Nächste Mission</button>
+            <div id="error6" class="error-msg">Falsches Passwort!</div>
+        </div>
+    </div>
+
+    <div id="station7" class="card hidden">
+        <h2>📍 7. Tauschgeschäft am Marienplatz</h2>
+        
+        <div class="info-box">
+            <strong>💡 Wusstest du schon?</strong>
+            Der Marienplatz entstand im 19. Jahrhundert, als Stuttgart stark wuchs. Er wurde nach Königin Marie von Württemberg benannt. Früher war die Gegend eher ein Randbereich, entwickelte sich aber zum wichtigsten Platz im Süden Stuttgarts.<br><br>
+            Besonders bekannt ist der Platz heute durch die "Zacke", die Zahnradbahn, die von dort Richtung Degerloch fährt. Heute ist der Marienplatz ein beliebter Treffpunkt mit Cafés und viel Stadtleben.
+        </div>
+        
+        <div class="challenge-box">
+            🔄 Die Mission: Der Markt ruft<br><br>
+            Sucht euch einen simplen Gegenstand aus euren Taschen (Tempo, leere Wasserflasche etc.) und versucht diesen mit Passanten zu tauschen. Ihr müsst mindestens 2-mal erfolgreich tauschen!
+        </div>
+        <p class="upload-hint">📸 Ladet ein Foto von eurem finalen Tausch-Ergebnis in die Gruppe hoch!</p>
+
+        <div id="unlock-area-7" class="unlock-area">
+            <label>Deal gemacht? Passwort für das Finale:</label>
+            <input type="password" id="pwd7" inputmode="numeric" maxlength="4" placeholder="****">
+            <button onclick="checkPassword(7, 8)">Zum Finale</button>
+            <div id="error7" class="error-msg">Falsches Passwort!</div>
+        </div>
+    </div>
+
+    <div id="station8" class="card hidden">
+        <h2>📍 8. Finale auf der Karlshöhe</h2>
+        
+        <div class="challenge-box">
+            ⛰️ Die Mission: Gipfelstürmer<br><br>
+            Die letzte Hürde! Besteigt die Weinberge der Stadt auf der Karlshöhe. Lauft bis zum höchsten Punkt und sucht den Fernsehturm.
+        </div>
+        <p class="upload-hint">📸 Schießt ein Beweisfoto mit Blick auf den Turm und schickt es ab!</p>
+
+        <div id="unlock-area-8" class="unlock-area">
+            <label>Gipfel erreicht? Finale freischalten:</label>
+            <input type="password" id="pwd8" inputmode="numeric" maxlength="4" placeholder="****">
+            <button onclick="checkPassword(8, 9)">Rallye beenden</button>
+            <div id="error8" class="error-msg">Falsches Passwort!</div>
+        </div>
+    </div>
+
+    <div id="station9" class="card hidden finale-box">
+        <h3>🎉 WOW! IHR HABT ES GESCHAFFT! 🎉</h3>
+        <p style="font-size: 18px; color: #fff;">
+            Wir hoffen, ihr konntet Stuttgart gut erkunden und hattet jede Menge Spaß.<br><br>
+            <strong>Ein wundervolles MDV Wochenende wünschen wir euch!</strong>
+        </p>
+    </div>
+
+</div>
+
+<script>
+    // Das Master-Passwort für alle Stationen
+    const MASTER_PASSWORD = "0000";
+
+    function checkPassword(currentStation, nextStation) {
+        const inputField = document.getElementById('pwd' + currentStation);
+        const errorMsg = document.getElementById('error' + currentStation);
+        const unlockArea = document.getElementById('unlock-area-' + currentStation);
+        const nextCard = document.getElementById('station' + nextStation);
+
+        if (inputField.value === MASTER_PASSWORD) {
+            // Passwort richtig: Nächste Karte anzeigen und Unlock-Area der alten ausblenden
+            nextCard.classList.remove('hidden');
+            if(unlockArea) unlockArea.style.display = 'none';
+            
+            // Automatisch zur neuen Karte scrollen
+            setTimeout(() => {
+                nextCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        } else {
+            // Passwort falsch: Fehlermeldung zeigen
+            errorMsg.style.display = 'block';
+            inputField.value = ''; // Feld leeren
+        }
+    }
+</script>
+
+</body>
+</html>
