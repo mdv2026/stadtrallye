@@ -5,32 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MDV 2026 Stadtrallye - Leo-Clubs</title>
     <style>
-        /* Mobile-First Design & Leo-Club Farben (Bordeaux/Gold) */
+        /* Mobile-First Design & Leo-Club Farben (Blau, Silber, Gelb) */
         :root {
-            --leo-red: #8B1538; /* Klassisches Leo/Lions Dunkelrot */
-            --leo-gold: #F2A900; /* Leo/Lions Gelb-Gold */
-            --leo-light: #f9f9f9;
+            --leo-blue: #00488d;   /* Leo-Club Blau */
+            --leo-yellow: #f6a800; /* Leo-Club Gelb/Gold */
+            --leo-silver: #a3a8a8; /* Leo-Club Silber/Grau */
+            --leo-light: #f4f6f8;  /* Heller Hintergrund */
         }
         
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: var(--leo-light);
             margin: 0;
             padding: 0;
             color: #222;
         }
         header {
-            background-color: var(--leo-red);
+            background-color: var(--leo-blue);
             color: #fff;
             text-align: center;
             padding: 25px 15px;
-            border-bottom: 6px solid var(--leo-gold);
+            border-bottom: 6px solid var(--leo-yellow);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         header .logo {
-            height: 70px;
+            height: 75px;
             margin-bottom: 10px;
-            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
+            /* Falls das Bild nicht lädt, wird ein stylischer Alt-Text angezeigt */
+            color: var(--leo-yellow);
+            font-weight: bold;
         }
         header h1 {
             margin: 0;
@@ -43,7 +46,7 @@
             margin: 8px 0 0 0;
             font-size: 15px;
             font-weight: bold;
-            color: var(--leo-gold);
+            color: var(--leo-silver);
         }
         .container {
             padding: 15px;
@@ -57,7 +60,7 @@
             padding: 20px;
             margin-top: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border-left: 6px solid var(--leo-red);
+            border-left: 6px solid var(--leo-blue);
             opacity: 1;
             transition: opacity 0.5s ease-in-out;
         }
@@ -67,9 +70,9 @@
         }
         h2 {
             margin-top: 0;
-            color: var(--leo-red);
+            color: var(--leo-blue);
             font-size: 20px;
-            border-bottom: 2px dashed #ccc;
+            border-bottom: 2px dashed var(--leo-silver);
             padding-bottom: 10px;
         }
         p {
@@ -77,8 +80,8 @@
             font-size: 16px;
         }
         .info-box {
-            background-color: #f8f1f3;
-            border-left: 4px solid var(--leo-red);
+            background-color: #eef3f7;
+            border-left: 4px solid var(--leo-silver);
             padding: 12px 15px;
             margin: 15px 0;
             border-radius: 0 8px 8px 0;
@@ -86,35 +89,36 @@
             color: #333;
         }
         .info-box strong {
-            color: var(--leo-red);
+            color: var(--leo-blue);
             display: block;
             margin-bottom: 5px;
             font-size: 16px;
         }
         .challenge-box {
-            background-color: #fffaf0;
-            border: 1px solid var(--leo-gold);
+            background-color: #fffcf2;
+            border: 2px solid var(--leo-yellow);
             padding: 15px;
             border-radius: 8px;
             margin: 15px 0;
             font-weight: bold;
             font-size: 17px;
-            color: #444;
+            color: #333;
         }
         .upload-hint {
             font-size: 14px;
-            color: #555;
+            color: #666;
             text-align: center;
             margin-bottom: 10px;
             font-style: italic;
         }
         .unlock-area {
-            background-color: #222;
+            background-color: var(--leo-blue);
             padding: 15px;
             border-radius: 8px;
             margin-top: 20px;
             text-align: center;
             color: white;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
         }
         input[type="password"] {
             width: 100%;
@@ -122,14 +126,19 @@
             box-sizing: border-box;
             font-size: 20px;
             text-align: center;
-            border: 2px solid var(--leo-gold);
+            border: 2px solid var(--leo-silver);
             border-radius: 6px;
             margin-bottom: 10px;
             letter-spacing: 5px;
         }
+        input[type="password"]:focus {
+            outline: none;
+            border-color: var(--leo-yellow);
+            box-shadow: 0 0 5px rgba(246, 168, 0, 0.5);
+        }
         button {
-            background-color: var(--leo-red);
-            color: #fff;
+            background-color: var(--leo-yellow);
+            color: var(--leo-blue);
             border: none;
             padding: 15px;
             font-size: 18px;
@@ -138,32 +147,33 @@
             border-radius: 6px;
             cursor: pointer;
             text-transform: uppercase;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.1s;
         }
         button:active, button:hover {
-            background-color: #6a0f28;
+            background-color: #dca000;
         }
         .error-msg {
-            color: #ff4444;
+            color: #ffcccc;
             font-size: 14px;
-            margin-top: 5px;
+            margin-top: 8px;
+            font-weight: bold;
             display: none;
         }
         .finale-box {
-            background-color: var(--leo-red);
-            color: var(--leo-gold);
+            background-color: var(--leo-blue);
+            color: #fff;
             padding: 20px;
             text-align: center;
             border-radius: 8px;
             margin-top: 20px;
-            border: 2px solid var(--leo-gold);
+            border: 4px solid var(--leo-yellow);
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Leo_Club_Logo.svg/512px-Leo_Club_Logo.svg.png" alt="Leo Club Logo" class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Leo_Club_Logo.svg" alt="Leo Club Logo" class="logo" onerror="this.onerror=null; this.src='https://lionsclubs.org/v2/resource/download/79331818';">
     <h1>MDV 2026</h1>
     <p>Mission Stuttgart<br>📍 Startpunkt: Liederhalle</p>
 </header>
@@ -250,120 +260,3 @@
         <h2>📍 5. Kehrwoche am Rathausplatz</h2>
         <div class="info-box">
             <strong>💡 Wusstest du schon?</strong>
-            Das Stuttgarter Rathaus wurde in den 1950er Jahren neu gebaut, nachdem das frühere stark zerstört worden war...
-        </div>
-        <div class="challenge-box">
-            ❓ Das 5. Rätsel:<br><br>
-            Ein Rathaus aus vielen Gebäuden. Welche Hausnummer hat der Turm?
-        </div>
-        <p class="upload-hint">Tipp: Füllt fehlende Stellen vorne mit Nullen auf, um auf 4 Ziffern zu kommen.</p>
-        <div id="unlock-area-5" class="unlock-area">
-            <label>Hausnummer entdeckt? Code eingeben:</label>
-            <input type="password" id="pwd5" inputmode="numeric" maxlength="4" placeholder="****">
-            <button onclick="checkPassword(5, 6)">Nächste Mission</button>
-            <div id="error5" class="error-msg">Falscher Code!</div>
-        </div>
-    </div>
-
-    <div id="station6" class="card hidden">
-        <h2>📍 6. Pause am Hans im Glück Brunnen</h2>
-        <div class="info-box">
-            <strong>💡 Wusstest du schon?</strong>
-            Der Brunnen in der Geißstraße wurde als krönender Abschluss einer Altstadtsanierung eingeweiht...
-        </div>
-        <div class="challenge-box">
-            ❓ Das 6. Rätsel:<br><br>
-            Eine Taufe mit dem Namen Hans. Nenne das Jahr der Einweihung.
-        </div>
-        <p class="upload-hint">Tipp: Die Jahreszahl findet ihr direkt vor Ort (oder im Text oben).</p>
-        <div id="unlock-area-6" class="unlock-area">
-            <label>Jahreszahl gefunden? Code eingeben:</label>
-            <input type="password" id="pwd6" inputmode="numeric" maxlength="4" placeholder="****">
-            <button onclick="checkPassword(6, 7)">Nächste Mission</button>
-            <div id="error6" class="error-msg">Falscher Code!</div>
-        </div>
-    </div>
-
-    <div id="station7" class="card hidden">
-        <h2>📍 7. Tauschgeschäft am Marienplatz</h2>
-        <div class="info-box">
-            <strong>💡 Wusstest du schon?</strong>
-            Der Marienplatz entstand im 19. Jahrhundert, als Stuttgart stark wuchs. Er wurde nach Königin Marie von Württemberg benannt...
-        </div>
-        <div class="challenge-box">
-            ❓ Das 7. Rätsel:<br><br>
-            Unsere Lieblingsbar... ein Vorname mit L. Nenne die Hausnummer.
-        </div>
-        <p class="upload-hint">Tipp: Wenn die Hausnummer kürzer als 4 Ziffern ist, füllt sie vorn mit Nullen auf (z.B. 0109).</p>
-        <div id="unlock-area-7" class="unlock-area">
-            <label>Hausnummer gefunden? Code für das Finale:</label>
-            <input type="password" id="pwd7" inputmode="numeric" maxlength="4" placeholder="****">
-            <button onclick="checkPassword(7, 8)">Zum Finale</button>
-            <div id="error7" class="error-msg">Falscher Code!</div>
-        </div>
-    </div>
-
-    <div id="station8" class="card hidden">
-        <h2>📍 8. Finale auf der Karlshöhe</h2>
-        <div class="challenge-box">
-            ❓ Das 8. Rätsel:<br><br>
-            Der Architekt Fritz Leonhardt als Retter für mobilen Empfang. Wann wurde der Fernsehturm am Horizont eröffnet?
-        </div>
-        <p class="upload-hint">Tipp: Das Baujahr des Stuttgarter Wahrzeichens.</p>
-        <div id="unlock-area-8" class="unlock-area">
-            <label>Jahreszahl ermittelt? Finale freischalten:</label>
-            <input type="password" id="pwd8" inputmode="numeric" maxlength="4" placeholder="****">
-            <button onclick="checkPassword(8, 9)">Rallye beenden</button>
-            <div id="error8" class="error-msg">Falscher Code!</div>
-        </div>
-    </div>
-
-    <div id="station9" class="card hidden finale-box">
-        <h3 style="color: #fff;">🎉 WOW! IHR HABT ES GESCHAFFT! 🎉</h3>
-        <p style="font-size: 18px; color: #fff;">
-            Wir hoffen, ihr konntet Stuttgart gut erkunden und hattet jede Menge Spaß beim Lösen der Rätsel.<br><br>
-            <strong>Ein wundervolles MDV Wochenende wünschen wir euch!</strong>
-        </p>
-    </div>
-
-</div>
-
-<script>
-    // Die individuellen Lösungen der 8 Rätsel aus dem PDF
-    const PASSWORDS = {
-        1: "1918",
-        2: "0324",
-        3: "3210",
-        4: "7017",
-        5: "0001",
-        6: "1909",
-        7: "0109",
-        8: "1956"
-    };
-
-    function checkPassword(currentStation, nextStation) {
-        const inputField = document.getElementById('pwd' + currentStation);
-        const errorMsg = document.getElementById('error' + currentStation);
-        const unlockArea = document.getElementById('unlock-area-' + currentStation);
-        const nextCard = document.getElementById('station' + nextStation);
-
-        // Vergleiche die Eingabe mit dem passenden Code aus dem Array
-        if (inputField.value === PASSWORDS[currentStation]) {
-            // Passwort richtig: Nächste Karte anzeigen und Unlock-Area der alten ausblenden
-            nextCard.classList.remove('hidden');
-            if(unlockArea) unlockArea.style.display = 'none';
-            
-            // Automatisch zur neuen Karte scrollen
-            setTimeout(() => {
-                nextCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
-        } else {
-            // Passwort falsch: Fehlermeldung zeigen
-            errorMsg.style.display = 'block';
-            inputField.value = ''; // Feld leeren
-        }
-    }
-</script>
-
-</body>
-</html>
