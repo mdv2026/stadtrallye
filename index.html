@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MDV 2026 Stadtrallye</title>
+    <title>MDV 2026 Stadtrallye - Leo-Clubs</title>
     <style>
-        /* Mobile-First Design & Stuttgart Farben (Schwarz/Gelb) */
+        /* Mobile-First Design & Leo-Club Farben (Bordeaux/Gold) */
+        :root {
+            --leo-red: #8B1538; /* Klassisches Leo/Lions Dunkelrot */
+            --leo-gold: #F2A900; /* Leo/Lions Gelb-Gold */
+            --leo-light: #f9f9f9;
+        }
+        
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: #f0f0f0;
@@ -14,23 +20,30 @@
             color: #222;
         }
         header {
-            background-color: #FFD100; /* Stuttgart Gelb */
-            color: #000;
+            background-color: var(--leo-red);
+            color: #fff;
             text-align: center;
             padding: 25px 15px;
-            border-bottom: 5px solid #000;
+            border-bottom: 6px solid var(--leo-gold);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header .logo {
+            height: 70px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
         }
         header h1 {
             margin: 0;
             font-size: 26px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: #fff;
         }
         header p {
             margin: 8px 0 0 0;
             font-size: 15px;
             font-weight: bold;
+            color: var(--leo-gold);
         }
         .container {
             padding: 15px;
@@ -44,7 +57,7 @@
             padding: 20px;
             margin-top: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border-left: 6px solid #E32221; /* Roter Akzent */
+            border-left: 6px solid var(--leo-red);
             opacity: 1;
             transition: opacity 0.5s ease-in-out;
         }
@@ -54,7 +67,7 @@
         }
         h2 {
             margin-top: 0;
-            color: #000;
+            color: var(--leo-red);
             font-size: 20px;
             border-bottom: 2px dashed #ccc;
             padding-bottom: 10px;
@@ -64,8 +77,8 @@
             font-size: 16px;
         }
         .info-box {
-            background-color: #eef5fa;
-            border-left: 4px solid #0056b3;
+            background-color: #f8f1f3;
+            border-left: 4px solid var(--leo-red);
             padding: 12px 15px;
             margin: 15px 0;
             border-radius: 0 8px 8px 0;
@@ -73,18 +86,20 @@
             color: #333;
         }
         .info-box strong {
-            color: #0056b3;
+            color: var(--leo-red);
             display: block;
             margin-bottom: 5px;
             font-size: 16px;
         }
         .challenge-box {
-            background-color: #fff9e6;
-            border: 1px solid #FFD100;
+            background-color: #fffaf0;
+            border: 1px solid var(--leo-gold);
             padding: 15px;
             border-radius: 8px;
             margin: 15px 0;
             font-weight: bold;
+            font-size: 17px;
+            color: #444;
         }
         .upload-hint {
             font-size: 14px;
@@ -107,14 +122,14 @@
             box-sizing: border-box;
             font-size: 20px;
             text-align: center;
-            border: 2px solid #FFD100;
+            border: 2px solid var(--leo-gold);
             border-radius: 6px;
             margin-bottom: 10px;
             letter-spacing: 5px;
         }
         button {
-            background-color: #FFD100;
-            color: #000;
+            background-color: var(--leo-red);
+            color: #fff;
             border: none;
             padding: 15px;
             font-size: 18px;
@@ -123,9 +138,10 @@
             border-radius: 6px;
             cursor: pointer;
             text-transform: uppercase;
+            transition: background-color 0.2s;
         }
-        button:active {
-            background-color: #e6bc00;
+        button:active, button:hover {
+            background-color: #6a0f28;
         }
         .error-msg {
             color: #ff4444;
@@ -134,19 +150,20 @@
             display: none;
         }
         .finale-box {
-            background-color: #000;
-            color: #FFD100;
+            background-color: var(--leo-red);
+            color: var(--leo-gold);
             padding: 20px;
             text-align: center;
             border-radius: 8px;
             margin-top: 20px;
-            border: 2px solid #FFD100;
+            border: 2px solid var(--leo-gold);
         }
     </style>
 </head>
 <body>
 
 <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Leo_Club_Logo.svg/512px-Leo_Club_Logo.svg.png" alt="Leo Club Logo" class="logo">
     <h1>MDV 2026</h1>
     <p>Mission Stuttgart<br>📍 Startpunkt: Liederhalle</p>
 </header>
@@ -155,188 +172,156 @@
 
     <div id="station1" class="card">
         <h2>📍 1. Palast der Republik</h2>
-        
         <div class="info-box">
             <strong>💡 Wusstest du schon?</strong>
-            Ursprünglich wurde der kleine achteckige Pavillon 1926 als öffentliches Toilettenhäuschen gebaut und später auch als Buchverkaufsstelle genutzt – sein Spitzname damals war „Buchhaus Wittwer“.<br><br>
-            1989 wurde der Pavillon in eine Gaststätte und Bar umgewandelt und erhielt den heute bekannten Namen „Palast der Republik“. Seither ist er besonders im Frühling und Sommer ein beliebter Treffpunkt, an dem Menschen aus Stuttgart und Gästen gemütlich draußen sitzen, trinken und reden – oft bis spät in die Nacht. Trotz seines unscheinbaren Ursprungs gilt der Ort heute als kulinarisch‑kultureller Treffpunkt mit ganz eigener Atmosphäre im Herzen von Stuttgart.
+            Ursprünglich wurde der kleine achteckige Pavillon 1926 als öffentliches Toilettenhäuschen gebaut...
         </div>
-        
         <div class="challenge-box">
-            🍻 Die Mission: Startschuss<br><br>
-            Kauft euch ein kühles Getränk, um entspannt die Stadttour zu starten! 
+            ❓ Das 1. Rätsel:<br><br>
+            Ein Reich fällt, eine Republik beginnt. (Finde das Jahr)
         </div>
-        <p class="upload-hint">📸 Schickt ein Foto, wie ihr anstoßt, in eure MDV-Gruppe!</p>
-
+        <p class="upload-hint">Tipp: Die Antwort ist euer 4-stelliger Zahlencode.</p>
         <div id="unlock-area-1" class="unlock-area">
-            <label>Foto verschickt? Passwort eingeben:</label>
+            <label>Rätsel gelöst? Code eingeben:</label>
             <input type="password" id="pwd1" inputmode="numeric" maxlength="4" placeholder="****">
             <button onclick="checkPassword(1, 2)">Nächste Mission</button>
-            <div id="error1" class="error-msg">Falsches Passwort!</div>
+            <div id="error1" class="error-msg">Falscher Code!</div>
         </div>
     </div>
 
     <div id="station2" class="card hidden">
         <h2>📍 2. Bücherwurm in der Stadtbibliothek</h2>
-        
         <div class="info-box">
             <strong>💡 Wusstest du schon?</strong>
-            Die Stadtbibliothek Stuttgart ist ein modernes Wahrzeichen der Stadt, eröffnet 2011 am Mailänder Platz im Europaviertel. Gebaut in einem kubischen, minimalistischen Design, fällt sie durch ihre helle, weiße Fassade und die zentrale Lichthof-Konstruktion sofort ins Auge.<br><br>
-            Innen dominieren klare Linien und viel Licht – die Bibliothek wirkt fast wie ein Lichtwürfel, der zum Lesen, Lernen und Verweilen einlädt. Sie bietet über 500.000 Medien, Arbeitsplätze, Veranstaltungsräume und ein Café. Ein beliebter Ort für Studierende, Familien und Touristen, die Architektur und Atmosphäre gleichermaßen schätzen.
+            Die Stadtbibliothek Stuttgart ist ein modernes Wahrzeichen der Stadt, eröffnet 2011 am Mailänder Platz...
         </div>
-        
         <div class="challenge-box">
-            📚 Die Mission: Das schwerste Wissen<br><br>
-            Geht in die Stadtbibliothek und sucht nach dem dicksten Buch, das ihr finden könnt!
+            ❓ Das 2. Rätsel:<br><br>
+            Wie viele Öffnungen zählst du in der Fassade? Das Raster aller 4 Seiten summiert.
         </div>
-        <p class="upload-hint">📸 Macht ein Foto vom Buch und schickt/ladet es in der Gruppe hoch!</p>
-
+        <p class="upload-hint">Tipp: Zählt genau und addiert die Seiten.</p>
         <div id="unlock-area-2" class="unlock-area">
-            <label>Buch gefunden? Passwort eingeben:</label>
+            <label>Ergebnis berechnet? Code eingeben:</label>
             <input type="password" id="pwd2" inputmode="numeric" maxlength="4" placeholder="****">
             <button onclick="checkPassword(2, 3)">Nächste Mission</button>
-            <div id="error2" class="error-msg">Falsches Passwort!</div>
+            <div id="error2" class="error-msg">Falscher Code!</div>
         </div>
     </div>
 
     <div id="station3" class="card hidden">
-        <h2>📍 3. Stuttgart 21</h2>
-        
+        <h2>📍 3. Stuttgart 21 / Fotospot</h2>
         <div class="info-box">
             <strong>💡 Wusstest du schon?</strong>
-            Stuttgart 21 ist das Großprojekt, bei dem Stuttgart seinen alten Kopfbahnhof gegen einen modernen unterirdischen Durchgangsbahnhof eintauschen will. Die Idee: Züge sollen schneller durchfahren.<br><br>
-            Dafür wurden riesige Tunnel gebaut – mit speziell angepassten Tunnelbohrern. Nebenbei entstehen oben neue Flächen für Parks, Wohnungen und ein moderneres Stadtbild. Und auch wenn das Projekt lange dauert: Am Ende soll Stuttgart einen Bahnhof bekommen, der mehr kann als nur Verspätungen ansagen.
+            Stuttgart 21 ist das Großprojekt, bei dem Stuttgart seinen alten Kopfbahnhof gegen einen modernen unterirdischen Durchgangsbahnhof eintauscht...
         </div>
-        
         <div class="challenge-box">
-            🚧 Die Mission: Bauarbeiter gesucht<br><br>
-            Sucht euch einen Bauzaun oder ein Bullauge zur Baustelle. Die gesamte Gruppe soll eine menschliche Baumaschine (z.B. einen Bagger, Kran oder Pressluftbohrer) nachstellen.
+            ❓ Das 3. Rätsel:<br><br>
+            Der Countdown fürs perfekte Foto.
         </div>
-        <p class="upload-hint">📸 Schickt ein Foto eurer "Baumaschine" in die Gruppe, um zur nächsten Aufgabe zu kommen!</p>
-
+        <p class="upload-hint">Tipp: Wie zählt man vor einem Foto rückwärts?</p>
         <div id="unlock-area-3" class="unlock-area">
-            <label>Baustelle abgenommen? Passwort eingeben:</label>
+            <label>Countdown verstanden? Code eingeben:</label>
             <input type="password" id="pwd3" inputmode="numeric" maxlength="4" placeholder="****">
             <button onclick="checkPassword(3, 4)">Nächste Mission</button>
-            <div id="error3" class="error-msg">Falsches Passwort!</div>
+            <div id="error3" class="error-msg">Falscher Code!</div>
         </div>
     </div>
 
     <div id="station4" class="card hidden">
         <h2>📍 4. Das moderne Denkmal</h2>
-        
         <div class="info-box">
             <strong>💡 Wusstest du schon?</strong>
-            Das Neue Schloss wurde im 18. Jahrhundert gebaut und war die Residenz der württembergischen Herzöge und späteren Könige. Im Zweiten Weltkrieg wurde es stark zerstört, danach aber wieder aufgebaut.<br><br>
-            Der Schlossplatz davor entwickelte sich zum zentralen Platz der Stadt und wurde immer mehr zum Treffpunkt für die Bevölkerung. Heute sitzt im Neuen Schloss die Landesverwaltung, und der Schlossplatz ist das „Wohnzimmer“ von Stuttgart.
+            Das Neue Schloss wurde im 18. Jahrhundert gebaut und war die Residenz der württembergischen Herzöge...
         </div>
-        
         <div class="challenge-box">
-            🏛️ Die Mission: Schlossplatz-Statistik<br><br>
-            Vergesst das olle Schloss im Hintergrund. Baut als Gruppe ein episches menschliches Denkmal auf dem Rasen auf (z.B. eine Pyramide oder eine Denker-Pose).<br><br>
-            <strong>Aufgabe:</strong> Bleibt exakt 3 Minuten in der Position eures Denkmals stehen und zählt alle Passanten, die stehen bleiben und sichtlich ein Foto von euch machen.
+            ❓ Das 4. Rätsel:<br><br>
+            Ein Brief ins Schloss... nenne die 4 ersten Ziffern der Postleitzahl.
         </div>
-        <p class="upload-hint">📸 Lasst am Ende selbst ein Foto von euch in der Pose machen und schickt es in die Gruppe!</p>
-
+        <p class="upload-hint">Tipp: Werft einen Blick auf eine Postanschrift oder Karte in der Nähe.</p>
         <div id="unlock-area-4" class="unlock-area">
-            <label>Zählung abgeschlossen? Passwort eingeben:</label>
+            <label>PLZ gefunden? Code eingeben:</label>
             <input type="password" id="pwd4" inputmode="numeric" maxlength="4" placeholder="****">
             <button onclick="checkPassword(4, 5)">Nächste Mission</button>
-            <div id="error4" class="error-msg">Falsches Passwort!</div>
+            <div id="error4" class="error-msg">Falscher Code!</div>
         </div>
     </div>
 
     <div id="station5" class="card hidden">
         <h2>📍 5. Kehrwoche am Rathausplatz</h2>
-        
         <div class="info-box">
             <strong>💡 Wusstest du schon?</strong>
-            Das Stuttgarter Rathaus wurde in den 1950er Jahren neu gebaut, nachdem das frühere Rathaus im Zweiten Weltkrieg stark zerstört worden war. Es steht am Marktplatz und ist seitdem das politische Zentrum der Stadtverwaltung.<br><br>
-            Typisch ist der hohe Rathausturm, der das Gebäude weithin sichtbar macht. Das heutige Rathaus ist bewusst modern gestaltet und unterscheidet sich deutlich von historischen Gebäuden in der Umgebung. Bis heute ist es der Ort, an dem wichtige Entscheidungen für Stuttgart getroffen werden.
+            Das Stuttgarter Rathaus wurde in den 1950er Jahren neu gebaut, nachdem das frühere stark zerstört worden war...
         </div>
-        
         <div class="challenge-box">
-            🧹 Die Mission: Schwaben-Pantomime<br><br>
-            Spielt "Schwaben-Pantomime". Ihr müsst Passanten einen typisch schwäbischen Begriff (z.B. Kehrwoche, Maultasche, Brezel oder Spätzlepresse) vorspielen – komplett ohne Worte.<br><br>
-            <strong>Bonus:</strong> Fahrt danach eine Runde Paternoster im Rathaus!
+            ❓ Das 5. Rätsel:<br><br>
+            Ein Rathaus aus vielen Gebäuden. Welche Hausnummer hat der Turm?
         </div>
-        <p class="upload-hint">📸 Schießt ein Foto von euch im Paternoster (oder davor, falls er zu hat) und ab in die Gruppe damit!</p>
-
+        <p class="upload-hint">Tipp: Füllt fehlende Stellen vorne mit Nullen auf, um auf 4 Ziffern zu kommen.</p>
         <div id="unlock-area-5" class="unlock-area">
-            <label>Paternoster überlebt? Passwort eingeben:</label>
+            <label>Hausnummer entdeckt? Code eingeben:</label>
             <input type="password" id="pwd5" inputmode="numeric" maxlength="4" placeholder="****">
             <button onclick="checkPassword(5, 6)">Nächste Mission</button>
-            <div id="error5" class="error-msg">Falsches Passwort!</div>
+            <div id="error5" class="error-msg">Falscher Code!</div>
         </div>
     </div>
 
     <div id="station6" class="card hidden">
         <h2>📍 6. Pause am Hans im Glück Brunnen</h2>
-        
         <div class="info-box">
             <strong>💡 Wusstest du schon?</strong>
-            Der Brunnen in der Geißstraße wurde am 12. Mai 1909 als krönender Abschluss einer Altstadtsanierung eingeweiht.<br><br>
-            Er zeigt eine Figur des Märchenhelden Hans aus dem Grimmschen Märchen „Hans im Glück“, umgeben von einem vergoldeten Schwein und Enten als Wasserspeier. Szenen aus der Geschichte erzählen sechs Medaillons rund um den Brunnen. Heute ist das Viertel ein extrem belebter Ort, besonders für Studenten.
+            Der Brunnen in der Geißstraße wurde als krönender Abschluss einer Altstadtsanierung eingeweiht...
         </div>
-        
         <div class="challenge-box">
-            🍔 Die Mission: Energiereserven füllen<br><br>
-            Ihr seid im Hans-im-Glück-Viertel angekommen! Macht eine wohlverdiente Pause. Gönnt euch einen Snack oder ein kaltes Getränk.
+            ❓ Das 6. Rätsel:<br><br>
+            Eine Taufe mit dem Namen Hans. Nenne das Jahr der Einweihung.
         </div>
-        <p class="upload-hint">📸 Macht ein Gruppenfoto beim Entspannen und schickt es weiter!</p>
-
+        <p class="upload-hint">Tipp: Die Jahreszahl findet ihr direkt vor Ort (oder im Text oben).</p>
         <div id="unlock-area-6" class="unlock-area">
-            <label>Gestärkt für den Endspurt? Passwort:</label>
+            <label>Jahreszahl gefunden? Code eingeben:</label>
             <input type="password" id="pwd6" inputmode="numeric" maxlength="4" placeholder="****">
             <button onclick="checkPassword(6, 7)">Nächste Mission</button>
-            <div id="error6" class="error-msg">Falsches Passwort!</div>
+            <div id="error6" class="error-msg">Falscher Code!</div>
         </div>
     </div>
 
     <div id="station7" class="card hidden">
         <h2>📍 7. Tauschgeschäft am Marienplatz</h2>
-        
         <div class="info-box">
             <strong>💡 Wusstest du schon?</strong>
-            Der Marienplatz entstand im 19. Jahrhundert, als Stuttgart stark wuchs. Er wurde nach Königin Marie von Württemberg benannt. Früher war die Gegend eher ein Randbereich, entwickelte sich aber zum wichtigsten Platz im Süden Stuttgarts.<br><br>
-            Besonders bekannt ist der Platz heute durch die "Zacke", die Zahnradbahn, die von dort Richtung Degerloch fährt. Heute ist der Marienplatz ein beliebter Treffpunkt mit Cafés und viel Stadtleben.
+            Der Marienplatz entstand im 19. Jahrhundert, als Stuttgart stark wuchs. Er wurde nach Königin Marie von Württemberg benannt...
         </div>
-        
         <div class="challenge-box">
-            🔄 Die Mission: Der Markt ruft<br><br>
-            Sucht euch einen simplen Gegenstand aus euren Taschen (Tempo, leere Wasserflasche etc.) und versucht diesen mit Passanten zu tauschen. Ihr müsst mindestens 2-mal erfolgreich tauschen!
+            ❓ Das 7. Rätsel:<br><br>
+            Unsere Lieblingsbar... ein Vorname mit L. Nenne die Hausnummer.
         </div>
-        <p class="upload-hint">📸 Ladet ein Foto von eurem finalen Tausch-Ergebnis in die Gruppe hoch!</p>
-
+        <p class="upload-hint">Tipp: Wenn die Hausnummer kürzer als 4 Ziffern ist, füllt sie vorn mit Nullen auf (z.B. 0109).</p>
         <div id="unlock-area-7" class="unlock-area">
-            <label>Deal gemacht? Passwort für das Finale:</label>
+            <label>Hausnummer gefunden? Code für das Finale:</label>
             <input type="password" id="pwd7" inputmode="numeric" maxlength="4" placeholder="****">
             <button onclick="checkPassword(7, 8)">Zum Finale</button>
-            <div id="error7" class="error-msg">Falsches Passwort!</div>
+            <div id="error7" class="error-msg">Falscher Code!</div>
         </div>
     </div>
 
     <div id="station8" class="card hidden">
         <h2>📍 8. Finale auf der Karlshöhe</h2>
-        
         <div class="challenge-box">
-            ⛰️ Die Mission: Gipfelstürmer<br><br>
-            Die letzte Hürde! Besteigt die Weinberge der Stadt auf der Karlshöhe. Lauft bis zum höchsten Punkt und sucht den Fernsehturm.
+            ❓ Das 8. Rätsel:<br><br>
+            Der Architekt Fritz Leonhardt als Retter für mobilen Empfang. Wann wurde der Fernsehturm am Horizont eröffnet?
         </div>
-        <p class="upload-hint">📸 Schießt ein Beweisfoto mit Blick auf den Turm und schickt es ab!</p>
-
+        <p class="upload-hint">Tipp: Das Baujahr des Stuttgarter Wahrzeichens.</p>
         <div id="unlock-area-8" class="unlock-area">
-            <label>Gipfel erreicht? Finale freischalten:</label>
+            <label>Jahreszahl ermittelt? Finale freischalten:</label>
             <input type="password" id="pwd8" inputmode="numeric" maxlength="4" placeholder="****">
             <button onclick="checkPassword(8, 9)">Rallye beenden</button>
-            <div id="error8" class="error-msg">Falsches Passwort!</div>
+            <div id="error8" class="error-msg">Falscher Code!</div>
         </div>
     </div>
 
     <div id="station9" class="card hidden finale-box">
-        <h3>🎉 WOW! IHR HABT ES GESCHAFFT! 🎉</h3>
+        <h3 style="color: #fff;">🎉 WOW! IHR HABT ES GESCHAFFT! 🎉</h3>
         <p style="font-size: 18px; color: #fff;">
-            Wir hoffen, ihr konntet Stuttgart gut erkunden und hattet jede Menge Spaß.<br><br>
+            Wir hoffen, ihr konntet Stuttgart gut erkunden und hattet jede Menge Spaß beim Lösen der Rätsel.<br><br>
             <strong>Ein wundervolles MDV Wochenende wünschen wir euch!</strong>
         </p>
     </div>
@@ -344,8 +329,17 @@
 </div>
 
 <script>
-    // Das Master-Passwort für alle Stationen
-    const MASTER_PASSWORD = "0000";
+    // Die individuellen Lösungen der 8 Rätsel aus dem PDF
+    const PASSWORDS = {
+        1: "1918",
+        2: "0324",
+        3: "3210",
+        4: "7017",
+        5: "0001",
+        6: "1909",
+        7: "0109",
+        8: "1956"
+    };
 
     function checkPassword(currentStation, nextStation) {
         const inputField = document.getElementById('pwd' + currentStation);
@@ -353,7 +347,8 @@
         const unlockArea = document.getElementById('unlock-area-' + currentStation);
         const nextCard = document.getElementById('station' + nextStation);
 
-        if (inputField.value === MASTER_PASSWORD) {
+        // Vergleiche die Eingabe mit dem passenden Code aus dem Array
+        if (inputField.value === PASSWORDS[currentStation]) {
             // Passwort richtig: Nächste Karte anzeigen und Unlock-Area der alten ausblenden
             nextCard.classList.remove('hidden');
             if(unlockArea) unlockArea.style.display = 'none';
